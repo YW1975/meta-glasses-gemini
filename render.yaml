@@ -18,4 +18,4 @@ services:
                           property: connectionString
               # 你需要在这里或在 Render 的 UI 中添加其他的环境变量
                key: PYTHON_VERSION
-                          value: 3.11
+               value: 3.11
