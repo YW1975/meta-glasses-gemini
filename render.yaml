@@ -3,6 +3,9 @@ services:
            - type: redis
              name: redis_yw1975
              plan: free # 使用免费套餐
+             ipAllowList: # <--- 新增部分：IP允许列表
+                      - source: 0.0.0.0/0
+                        description: "Allow all internal traffic"
      
            # FastAPI 应用服务
            - type: web
