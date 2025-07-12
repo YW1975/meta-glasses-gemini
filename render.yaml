@@ -1,21 +1,21 @@
-     services:
-    2       # Redis 服务
-    3       - type: redis
-    4         name: redis
-    5         plan: free # 使用免费套餐
-    6 
-    7       # FastAPI 应用服务
-    8       - type: web
-    9         name: meta-glasses-app
-   10         plan: free # 使用免费套餐
-   11         env: docker # 告诉 Render 使用 Dockerfile 来构建
-   12         envVars:
-   13           # 关键：告诉应用如何连接到上面创建的 Redis 服务
-   14           - key: REDIS_URL
-   15             fromService:
-   16               type: redis
-   17               name: redis
-   18               property: connectionString
-   19           # 你需要在这里或在 Render 的 UI 中添加其他的环境变量
-   20           - key: PYTHON_VERSION
-   21             value: 3.11
+services:
+           # Redis 服务
+           - type: redis
+             name: redis
+             plan: free # 使用免费套餐
+     
+       # FastAPI 应用服务
+           - type: web
+             name: meta-glasses-app
+            plan: free # 使用免费套餐
+            env: docker # 告诉 Render 使用 Dockerfile 来构建
+            envVars:
+              # 关键：告诉应用如何连接到上面创建的 Redis 服务
+             - key: REDIS_URL
+               fromService:
+                  type: redis
+                  name: redis
+                  property: connectionString
+              # 你需要在这里或在 Render 的 UI 中添加其他的环境变量
+              - key: PYTHON_VERSION
+                value: 3.11
