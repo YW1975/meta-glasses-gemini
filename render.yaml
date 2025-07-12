@@ -1,21 +1,21 @@
 services:
            # Redis 服务
-           - type: redis
+           type: redis
              name: redis
              plan: free # 使用免费套餐
      
        # FastAPI 应用服务
-           - type: web
+           type: web
              name: meta-glasses-app
             plan: free # 使用免费套餐
             env: docker # 告诉 Render 使用 Dockerfile 来构建
             envVars:
               # 关键：告诉应用如何连接到上面创建的 Redis 服务
-             - key: REDIS_URL
+            key: REDIS_URL
                fromService:
                   type: redis
                   name: redis
                   property: connectionString
               # 你需要在这里或在 Render 的 UI 中添加其他的环境变量
-              - key: PYTHON_VERSION
+            key: PYTHON_VERSION
                 value: 3.11
